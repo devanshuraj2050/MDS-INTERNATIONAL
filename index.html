@@ -1,166 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MDS INTERNATIONAL - Home</title>
-<style>
-/* ===== Global Reset ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-  line-height: 1.6;
-}
-
-/* ===== Header & Navigation ===== */
-header {
-  background-color: #004aad;
-  color: white;
-  padding: 15px 0;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-nav {
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-}
-
-nav h1 {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-nav ul li {
-  margin-left: 20px;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 5px 10px;
-  transition: background 0.3s ease;
-}
-
-nav ul li a:hover {
-  background: #003080;
-  border-radius: 4px;
-}
-
-/* ===== Hero Section ===== */
-.hero {
-  background: linear-gradient(to right, #004aad, #0073e6);
-  color: white;
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.hero h2 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: auto;
-}
-
-/* ===== Content Section ===== */
-section {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-section h3 {
-  color: #004aad;
-  margin-bottom: 15px;
-}
-
-section p {
-  margin-bottom: 15px;
-}
-
-/* ===== Footer ===== */
-footer {
-  background-color: #004aad;
-  color: white;
-  text-align: center;
-  padding: 15px;
-  margin-top: 40px;
-}
-
-@media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-  }
-  nav ul li {
-    margin: 10px 0;
-  }
-  .hero h2 {
-    font-size: 2rem;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Education-themed background */
+    body {
+      background: linear-gradient(to bottom right, #f0f9ff, #e0f2fe);
+      background-attachment: fixed;
+    }
+  </style>
 </head>
-<body>
+<body class="font-sans text-gray-800">
 
-<!-- ===== Header & Navigation ===== -->
-<header>
-  <nav>
-    <h1>MDS INTERNATIONAL</h1>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="service.html">Services</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+  <!-- Navigation -->
+  <nav class="bg-white/80 backdrop-blur-md shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        
+        <!-- Logo -->
+        <div class="flex-shrink-0 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L1 7l11 5 9-4.09V17h2V7L12 2z"/>
+            <path d="M11 12.84L3.5 9.5v5.67l7.5 3.41 7.5-3.41V9.5L11 12.84z"/>
+          </svg>
+          <span class="ml-2 text-xl font-bold text-blue-700">EduLearn</span>
+        </div>
+
+        <!-- Links -->
+        <div class="hidden md:flex space-x-6">
+          <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Courses</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center">
+          <button id="menu-btn" class="text-gray-700 focus:outline-none">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+              d="M4 6h16M4 12h16m-7 6h7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white/90 backdrop-blur-md px-4 pt-2 pb-4 space-y-2">
+      <a href="#" class="block text-gray-700 hover:text-blue-600">Home</a>
+      <a href="#" class="block text-gray-700 hover:text-blue-600">Courses</a>
+      <a href="#" class="block text-gray-700 hover:text-blue-600">About</a>
+      <a href="#" class="block text-gray-700 hover:text-blue-600">Contact</a>
+    </div>
   </nav>
-</header>
 
-<!-- ===== Hero Section ===== -->
-<div class="hero">
-  <h2>Welcome to MDS INTERNATIONAL</h2>
-  <p>Your trusted partner for global solutions in education, consultancy, and professional services.</p>
-</div>
+  <!-- Hero Section -->
+  <section class="text-center py-20">
+    <h1 class="text-4xl sm:text-5xl font-bold text-blue-700">Welcome to EduLearn</h1>
+    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+      Empowering students with quality online education and interactive learning resources.
+    </p>
+    <a href="#" class="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition">
+      Explore Courses
+    </a>
+  </section>
 
-<!-- ===== About Snippet ===== -->
-<section>
-  <h3>About Us</h3>
-  <p>MDS INTERNATIONAL is dedicated to delivering exceptional services worldwide. Our mission is to bridge opportunities and expertise to create a better tomorrow.</p>
-</section>
+  <!-- Footer -->
+  <footer class="bg-white/80 backdrop-blur-md py-6 text-center text-gray-600 mt-12">
+    © 2025 EduLearn. All rights reserved.
+  </footer>
 
-<!-- ===== Services Snippet ===== -->
-<section>
-  <h3>Our Services</h3>
-  <p>We offer a wide range of services including professional training, business consultancy, and project management. Explore our <a href="service.html" style="color:#004aad; font-weight:bold;">full services page</a> for more details.</p>
-</section>
-
-<!-- ===== Footer ===== -->
-<footer>
-  <p>&copy; 2025 MDS INTERNATIONAL | All Rights Reserved</p>
-</footer>
+  <!-- JS for mobile menu -->
+  <script>
+    document.getElementById("menu-btn").addEventListener("click", () => {
+      document.getElementById("mobile-menu").classList.toggle("hidden");
+    });
+  </script>
 
 </body>
 </html>
