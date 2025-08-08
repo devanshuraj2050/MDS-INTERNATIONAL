@@ -1,135 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us</title>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Education-themed background */
     body {
-        margin: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        line-height: 1.6;
-        background-color: #f9f9f9;
-        color: #333;
-        overflow-x: hidden;
+      background: linear-gradient(to bottom right, #f0f9ff, #e0f2fe);
+      background-attachment: fixed;
     }
-    header {
-        background: url('https://picsum.photos/1920/500?blur=2') center/cover no-repeat;
-        color: white;
-        text-align: center;
-        padding: 100px 20px;
-    }
-    header h1 {
-        font-size: 3rem;
-        margin: 0;
-        animation: fadeInDown 1s ease-out;
-    }
-    header p {
-        font-size: 1.2rem;
-        animation: fadeInUp 1.5s ease-out;
-    }
-    .container {
-        display: flex;
-        flex-wrap: wrap;
-        padding: 40px 10%;
-        align-items: center;
-        animation: fadeIn 1.5s ease-out;
-    }
-    .text {
-        flex: 1;
-        min-width: 300px;
-        padding: 20px;
-    }
-    .text h2 {
-        color: #444;
-        margin-bottom: 15px;
-    }
-    .text p {
-        margin-bottom: 15px;
-    }
-    .image {
-        flex: 1;
-        min-width: 300px;
-        padding: 20px;
-        text-align: center;
-    }
-    .image img {
-        width: 100%;
-        max-width: 400px;
-        border-radius: 10px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        transition: transform 0.3s ease;
-    }
-    .image img:hover {
-        transform: scale(1.05);
-    }
-    footer {
-        background: #333;
-        color: white;
-        text-align: center;
-        padding: 15px 10px;
-    }
-    footer a {
-        color: #00c3ff;
-        text-decoration: none;
-    }
-    footer a:hover {
-        text-decoration: underline;
-    }
-    /* Animations */
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInDown {
-        from { opacity: 0; transform: translateY(-20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    /* Responsive */
-    @media (max-width: 768px) {
-        header h1 { font-size: 2.2rem; }
-        .container { flex-direction: column; padding: 20px; }
-    }
-</style>
+  </style>
 </head>
-<body>
+<body class="font-sans text-gray-800">
 
-<header>
-    <h1>About Us</h1>
-    <p>Get to know more about our mission, vision, and team.</p>
-</header>
+  <!-- Navigation -->
+  <nav class="bg-white/80 backdrop-blur-md shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        
+        <!-- Logo -->
+        <div class="flex-shrink-0 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L1 7l11 5 9-4.09V17h2V7L12 2z"/>
+            <path d="M11 12.84L3.5 9.5v5.67l7.5 3.41 7.5-3.41V9.5L11 12.84z"/>
+          </svg>
+          <span class="ml-2 text-xl font-bold text-blue-700">EduLearn</span>
+        </div>
 
-<section class="container">
-    <div class="text">
-        <h2>Who We Are</h2>
-        <p>We are a passionate team dedicated to providing the best services to our clients. Our focus is on innovation, quality, and customer satisfaction. With years of experience in our field, we strive to deliver excellence in everything we do.</p>
-        <p>From humble beginnings to where we are today, our journey is defined by hard work, creativity, and a relentless pursuit of improvement.</p>
+        <!-- Links -->
+        <div class="hidden md:flex space-x-6">
+          <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Courses</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center">
+          <button id="menu-btn" class="text-gray-700 focus:outline-none">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+              d="M4 6h16M4 12h16m-7 6h7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="image">
-        <img src="https://picsum.photos/400/300" alt="Our Team">
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white/90 backdrop-blur-md px-4 pt-2 pb-4 space-y-2">
+      <a href="#" class="block text-gray-700 hover:text-blue-600">Home</a>
+      <a href="#" class="block text-gray-700 hover:text-blue-600">Courses</a>
+      <a href="#" class="block text-gray-700 hover:text-blue-600">About</a>
+      <a href="#" class="block text-gray-700 hover:text-blue-600">Contact</a>
     </div>
-</section>
+  </nav>
 
-<footer>
-    <p>&copy; 2025 Your Company Name | <a href="index.html">Back to Home</a></p>
-</footer>
+  <!-- Hero Section -->
+  <section class="text-center py-20">
+    <h1 class="text-4xl sm:text-5xl font-bold text-blue-700">Welcome to EduLearn</h1>
+    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+      Empowering students with quality online education and interactive learning resources.
+    </p>
+    <a href="#" class="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition">
+      Explore Courses
+    </a>
+  </section>
 
-<script>
-    // Smooth scroll effect for any anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
+  <!-- Footer -->
+  <footer class="bg-white/80 backdrop-blur-md py-6 text-center text-gray-600 mt-12">
+    © 2025 EduLearn. All rights reserved.
+  </footer>
+
+  <!-- JS for mobile menu -->
+  <script>
+    document.getElementById("menu-btn").addEventListener("click", () => {
+      document.getElementById("mobile-menu").classList.toggle("hidden");
     });
-</script>
+  </script>
 
 </body>
 </html>
-
