@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery | MDS International School</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f7fa;
+      color: #333;
+    }
+
+    header {
+      background: #0057b8;
+      color: white;
+      text-align: center;
+      padding: 2.5rem 1rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-style: italic;
+      color: #dfefff;
+      font-size: 1rem;
+    }
+
+    nav {
+      background: #003e8b;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      padding: 0.75rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s ease;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      color: #ffc107;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+    }
+
+    h2 {
+      color: #0057b8;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .gallery-item {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .caption {
+      padding: 0.8rem 1rem;
+      font-weight: 600;
+      color: #003e8b;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #003e8b;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      header p {
+        font-size: 0.95rem;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      main {
+        margin: 1.5rem auto 3rem;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>MDS International School</h1>
+    <p>"Empowering Young Minds to Create a Brighter Future"</p>
+  </header>
+
+  <nav>
+    <a href="index.html#about">About</a>
+    <a href="index.html#facilities">Facilities</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <h2>School Gallery</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=400&q=80" alt="Classroom Session" />
+        <div class="caption">Interactive Classroom</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1596495578061-c7a1ed8be76a?auto=format&fit=crop&w=400&q=80" alt="School Library" />
+        <div class="caption">Modern Library</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1562774050-c4b1ca7d2a49?auto=format&fit=crop&w=400&q=80" alt="Sports Ground" />
+        <div class="caption">Sports Ground</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Science Lab" />
+        <div class="caption">Science Laboratory</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?auto=format&fit=crop&w=400&q=80" alt="Art Class" />
+        <div class="caption">Art & Creativity</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=400&q=80" alt="School Event" />
+        <div class="caption">School Events</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 MDS International School. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
