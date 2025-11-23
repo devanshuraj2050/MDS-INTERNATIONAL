@@ -1,154 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Gallery | MDS International School</title>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
+    /* ---- reset & base ---- */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:"Poppins",sans-serif;
+      background:#f5f7fa;
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
-    body {
-      font-family: "Poppins", sans-serif;
-      background: #f5f7fa;
-      color: #333;
+    /* header */
+    header{
+      background:#0057b8;
+      color:#fff;
+      text-align:center;
+      padding:2.25rem 1rem 1.5rem;
+      box-shadow:0 3px 12px rgba(0,0,0,0.12);
+    }
+    header h1{font-size:2.4rem;letter-spacing:0.4px}
+    header p{color:#d9ebff;margin-top:.35rem;font-style:italic;font-size:0.98rem}
+
+    /* nav */
+    nav{
+      background:#003e8b;
+      display:flex;
+      justify-content:center;
+      gap:1.2rem;
+      padding:.7rem 1rem;
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+    nav a{color:#fff;text-decoration:none;font-weight:600}
+    nav a.active, nav a:hover{color:#ffc107;text-decoration:underline}
+
+    /* main container */
+    main{max-width:1100px;margin:2.0rem auto;padding:0 1rem}
+
+    h2{
+      color:#0057b8;
+      text-align:center;
+      font-size:2rem;
+      margin-bottom:1.75rem;
+      font-weight:600;
     }
 
-    /* HEADER */
-    header {
-      background: #0057b8;
-      color: white;
-      text-align: center;
-      padding: 2.5rem 1rem;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+    /* GALLERY GRID: responsive multi-column */
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      gap:1.25rem;
+      align-items:start;
+      margin:0 auto;
     }
 
-    header h1 {
-      font-size: 2.4rem;
-      font-weight: 600;
-      letter-spacing: 1px;
+    .gallery-item{
+      background:#fff;
+      border-radius:10px;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      box-shadow:0 6px 16px rgba(0,0,0,0.08);
+      transition:transform .22s ease,box-shadow .22s ease;
+      cursor:pointer;
+      height:100%;
+    }
+    .gallery-item:hover{
+      transform:translateY(-6px);
+      box-shadow:0 14px 30px rgba(0,0,0,0.12);
     }
 
-    header p {
-      margin-top: 0.4rem;
-      font-size: 1rem;
-      color: #d9ebff;
-      font-style: italic;
+    .gallery-item img{
+      width:100%;
+      height:160px;              /* change to 180/200 if you prefer taller cards */
+      object-fit:cover;
+      object-position:center;
+      display:block;
     }
 
-    /* NAVIGATION */
-    nav {
-      background: #003e8b;
-      padding: 0.75rem 1rem;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      display: flex;
-      justify-content: center;
-      gap: 1.4rem;
-      flex-wrap: wrap;
+    .caption{
+      padding:.9rem;
+      text-align:center;
+      font-weight:600;
+      color:#003e8b;
+      background:#fff;
+      margin-top:auto;
+      font-size:0.98rem;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: 0.3s ease;
+    /* small screens */
+    @media (max-width:600px){
+      header h1{font-size:1.6rem}
+      .gallery-item img{height:140px}
+      h2{font-size:1.5rem}
     }
 
-    nav a:hover {
-      color: #ffc107;
-    }
-
-    nav a.active {
-      color: #ffc107;
-      text-decoration: underline;
-    }
-
-    /* MAIN */
-    main {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 1rem;
-    }
-
-    h2 {
-      color: #0057b8;
-      font-size: 2.1rem;
-      text-align: center;
-      margin-bottom: 2rem;
-      font-weight: 600;
-    }
-
-    /* GALLERY GRID */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .gallery-item {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: 0.3s ease;
-      cursor: pointer;
-    }
-
-    .gallery-item:hover {
-      transform: scale(1.04);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-    }
-
-    .caption {
-      padding: 0.8rem;
-      text-align: center;
-      font-weight: 600;
-      color: #003e8b;
-      font-size: 0.95rem;
-    }
-
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 1.3rem;
-      background: #003e8b;
-      color: white;
-      font-size: 0.9rem;
-      margin-top: 3rem;
-    }
-
-    /* RESPONSIVE */
-    @media(max-width: 768px){
-      header h1 {
-        font-size: 1.9rem;
-      }
-      h2 {
-        font-size: 1.6rem;
-      }
-      .gallery-item img {
-        height: 140px;
-      }
+    footer{
+      text-align:center;
+      padding:1.2rem 1rem;
+      background:#003e8b;
+      color:#fff;
+      margin-top:2.25rem;
+      font-size:0.95rem;
     }
   </style>
 </head>
-
 <body>
 
   <header>
@@ -166,70 +133,85 @@
   <main>
     <h2>School Gallery</h2>
 
-    <!-- Paste these inside your .gallery-grid container -->
-<div class="gallery-item">
-  <img src="images/photo1.jpg" alt="Interactive Classroom" loading="lazy">
-  <div class="caption">Interactive Classroom</div>
-</div>
+    <!-- ====== GALLERY GRID (12 items) ====== -->
+    <div class="gallery-grid">
 
-<div class="gallery-item">
-  <img src="library.jpeg" alt="Modern Library" style="object-position:top" loading="lazy">
-  <div class="caption">Modern Library</div>
-</div>
+      <!-- 1 -->
+      <div class="gallery-item">
+        <img src="images/interactive-classroom.jpg" alt="Interactive Classroom" loading="lazy">
+        <div class="caption">Interactive Classroom</div>
+      </div>
 
-<div class="gallery-item">
-  <img src="sports.jpeg" alt="Sports Ground" style="object-position:top" loading="lazy">
-  <div class="caption">Sports Ground</div>
-</div>
+      <!-- 2 - your library image (you uploaded library.jpeg to repo root) -->
+      <div class="gallery-item">
+        <!-- portrait image: show top of image so faces appear -->
+        <img src="library.jpeg" alt="Modern Library" style="object-position:top" loading="lazy">
+        <div class="caption">Modern Library</div>
+      </div>
 
-<div class="gallery-item">
-  <img src="images/photo4.jpg" alt="Science Laboratory" loading="lazy">
-  <div class="caption">Science Laboratory</div>
-</div>
+      <!-- 3 - your sports image (you uploaded sports.jpeg to repo root) -->
+      <div class="gallery-item">
+        <img src="sports.jpeg" alt="Sports Ground" style="object-position:top" loading="lazy">
+        <div class="caption">Sports Ground</div>
+      </div>
 
-<div class="gallery-item">
-  <img src="images/photo5.jpg" alt="Art & Creativity" loading="lazy">
-  <div class="caption">Art & Creativity</div>
-</div>
+      <!-- 4 -->
+      <div class="gallery-item">
+        <img src="images/science-lab.jpg" alt="Science Laboratory" loading="lazy">
+        <div class="caption">Science Laboratory</div>
+      </div>
 
-<div class="gallery-item">
-  <img src="images/photo6.jpg" alt="School Events" loading="lazy">
-  <div class="caption">School Events</div>
-</div>
+      <!-- 5 -->
+      <div class="gallery-item">
+        <img src="images/art-creativity.jpg" alt="Art and Creativity" loading="lazy">
+        <div class="caption">Art &amp; Creativity</div>
+      </div>
 
-<!-- second row -->
-<div class="gallery-item">
-  <img src="images/photo7.jpg" alt="Sports Day" loading="lazy">
-  <div class="caption">Sports Day</div>
-</div>
+      <!-- 6 -->
+      <div class="gallery-item">
+        <img src="images/school-events.jpg" alt="School Events" loading="lazy">
+        <div class="caption">School Events</div>
+      </div>
 
-<div class="gallery-item">
-  <img src="images/photo8.jpg" alt="Morning Assembly" loading="lazy">
-  <div class="caption">Morning Assembly</div>
-</div>
+      <!-- 7 - a test/uploaded image path (we'll transform this for hosting) -->
+      <div class="gallery-item">
+        <img src="/mnt/data/9a18b529-f7b6-4732-b6bb-a38d5dc8297b.png" alt="Uploaded Test Photo" loading="lazy">
+        <div class="caption">Test Photo</div>
+      </div>
 
-<div class="gallery-item">
-  <img src="images/photo9.jpg" alt="Computer Lab" loading="lazy">
-  <div class="caption">Computer Lab</div>
-</div>
+      <!-- 8 -->
+      <div class="gallery-item">
+        <img src="images/sports-day.jpg" alt="Sports Day" loading="lazy">
+        <div class="caption">Sports Day</div>
+      </div>
 
-<div class="gallery-item">
-  <img src="images/photo10.jpg" alt="Play Area" loading="lazy">
-  <div class="caption">Play Area</div>
-</div>
+      <!-- 9 -->
+      <div class="gallery-item">
+        <img src="images/morning-assembly.jpg" alt="Morning Assembly" loading="lazy">
+        <div class="caption">Morning Assembly</div>
+      </div>
 
-<div class="gallery-item">
-  <img src="images/photo11.jpg" alt="Cultural Program" loading="lazy">
-  <div class="caption">Cultural Program</div>
-</div>
+      <!-- 10 -->
+      <div class="gallery-item">
+        <img src="images/computer-lab.jpg" alt="Computer Lab" loading="lazy">
+        <div class="caption">Computer Lab</div>
+      </div>
 
-<div class="gallery-item">
-  <img src="images/photo12.jpg" alt="Library Reading" loading="lazy">
-  <div class="caption">Library Reading</div>
-</div>
+      <!-- 11 -->
+      <div class="gallery-item">
+        <img src="images/play-area.jpg" alt="Play Area" loading="lazy">
+        <div class="caption">Play Area</div>
+      </div>
 
+      <!-- 12 -->
+      <div class="gallery-item">
+        <img src="images/cultural-program.jpg" alt="Cultural Program" loading="lazy">
+        <div class="caption">Cultural Program</div>
+      </div>
 
     </div>
+    <!-- ====== end gallery-grid ====== -->
+
   </main>
 
   <footer>
