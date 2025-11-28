@@ -5,22 +5,16 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Gallery | MDS International School</title>
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    /* ---- reset & base ---- */
     *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
     body{
       font-family:"Poppins",sans-serif;
       background:#f5f7fa;
       color:#222;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
     }
 
-    /* header */
     header{
       background:#0057b8;
       color:#fff;
@@ -28,195 +22,218 @@
       padding:2.25rem 1rem 1.5rem;
       box-shadow:0 3px 12px rgba(0,0,0,0.12);
     }
-    header h1{font-size:2.4rem;letter-spacing:0.4px}
-    header p{color:#d9ebff;margin-top:.35rem;font-style:italic;font-size:0.98rem}
+    header h1{font-size:2.4rem;}
+    header p{color:#d9ebff;margin-top:.35rem;font-style:italic;}
 
-    /* nav */
     nav{
       background:#003e8b;
       display:flex;
       justify-content:center;
       gap:1.2rem;
       padding:.7rem 1rem;
-      position:sticky;
-      top:0;
-      z-index:10;
+      position:sticky;top:0;z-index:10;
     }
     nav a{color:#fff;text-decoration:none;font-weight:600}
-    nav a.active, nav a:hover{color:#ffc107;text-decoration:underline}
+    nav a.active,nav a:hover{color:#ffc107;text-decoration:underline}
 
-    /* main container */
-    main{max-width:1100px;margin:2.0rem auto;padding:0 1rem}
+    main{max-width:1100px;margin:2rem auto;padding:0 1rem}
+    h2{text-align:center;color:#0057b8;font-size:2rem;margin-bottom:1.6rem}
 
-    h2{
-      color:#0057b8;
-      text-align:center;
-      font-size:2rem;
-      margin-bottom:1.75rem;
-      font-weight:600;
-    }
-
-    /* GALLERY GRID: responsive multi-column */
     .gallery-grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
       gap:1.25rem;
-      align-items:start;
-      margin:0 auto;
     }
 
     .gallery-item{
       background:#fff;
       border-radius:10px;
       overflow:hidden;
-      display:flex;
-      flex-direction:column;
       box-shadow:0 6px 16px rgba(0,0,0,0.08);
-      transition:transform .22s ease,box-shadow .22s ease;
+      transition:0.2s;
       cursor:pointer;
-      height:100%;
     }
     .gallery-item:hover{
       transform:translateY(-6px);
-      box-shadow:0 14px 30px rgba(0,0,0,0.12);
+      box-shadow:0 14px 30px rgba(0,0,0,0.15);
     }
-
     .gallery-item img{
-      width:100%;
-      height:160px;              /* change to 180/200 if you prefer taller cards */
-      object-fit:cover;
-      object-position:center;
-      display:block;
+      width:100%;height:160px;object-fit:cover;display:block;
     }
-
-    .caption{
-      padding:.9rem;
-      text-align:center;
-      font-weight:600;
-      color:#003e8b;
-      background:#fff;
-      margin-top:auto;
-      font-size:0.98rem;
-    }
-
-    /* small screens */
-    @media (max-width:600px){
-      header h1{font-size:1.6rem}
-      .gallery-item img{height:140px}
-      h2{font-size:1.5rem}
-    }
+    .caption{text-align:center;padding:.9rem;font-weight:600;color:#003e8b}
 
     footer{
-      text-align:center;
-      padding:1.2rem 1rem;
-      background:#003e8b;
-      color:#fff;
-      margin-top:2.25rem;
-      font-size:0.95rem;
+      padding:1.2rem;background:#003e8b;color:white;text-align:center;margin-top:2rem;
     }
+
+    /* -------- FULLSCREEN VIEWER -------- */
+    #viewer{
+      display:none;
+      position:fixed;top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,0.9);
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      z-index:9999;
+    }
+
+    #viewer img{
+      max-width:90%;max-height:80%;
+      object-fit:contain;
+      transition:transform 0.2s ease;
+      animation:fadeIn 0.25s ease;
+    }
+
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+    .viewer-btn{
+      position:absolute;
+      background:white;
+      color:#003e8b;
+      padding:10px 14px;
+      font-weight:700;
+      border-radius:8px;
+      cursor:pointer;
+      box-shadow:0 4px 12px rgba(0,0,0,0.4);
+      border:none;
+    }
+
+    #prevBtn{left:20px;top:50%;transform:translateY(-50%);}
+    #nextBtn{right:20px;top:50%;transform:translateY(-50%);}
+    #zoomIn{bottom:120px;left:50%;transform:translateX(-50%);}
+    #zoomOut{bottom:70px;left:50%;transform:translateX(-50%);}
+    #downloadBtn{
+      bottom:20px;
+      left:50%;
+      transform:translateX(-50%);
+      text-decoration:none;
+    }
+    #closeBtn{top:20px;right:20px;}
+
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>MDS International School</h1>
-    <p>"Empowering Young Minds to Create a Brighter Future"</p>
-  </header>
+<header>
+  <h1>MDS International School</h1>
+  <p>"Empowering Young Minds to Create a Brighter Future"</p>
+</header>
 
-  <nav>
-    <a href="index.html#about">About</a>
-    <a href="index.html#facilities">Facilities</a>
-    <a href="gallery.html" class="active">Gallery</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+<nav>
+  <a href="index.html#about">About</a>
+  <a href="index.html#facilities">Facilities</a>
+  <a href="gallery.html" class="active">Gallery</a>
+  <a href="contact.html">Contact</a>
+</nav>
 
-  <main>
-    <h2>School Gallery</h2>
+<main>
+  <h2>School Gallery</h2>
 
-    <!-- ====== GALLERY GRID (12 items) ====== -->
-    <div class="gallery-grid">
+  <div class="gallery-grid">
 
-      <!-- 1 -->
-      <div class="gallery-item">
-        <img src="Assembly.jpg" alt="Morning Assembly" loading="lazy">
-        <div class="caption">Morning Assembly </div>
-      </div>
+    <!-- YOUR ORIGINAL IMAGES -->
+    <div class="gallery-item"><img src="Assembly.jpg" alt=""><div class="caption">Morning Assembly</div></div>
+    <div class="gallery-item"><img src="Classroom.jpg" alt="" style="object-position:top"><div class="caption">Interactive Classroom</div></div>
+    <div class="gallery-item"><img src="Computer_lab.jpg" alt=""><div class="caption">Cyber Space Room</div></div>
+    <div class="gallery-item"><img src="Independence_day.jpg" alt=""><div class="caption">78th Independence Day</div></div>
+    <div class="gallery-item"><img src="Saraswati_puja.jpg" alt=""><div class="caption">Saraswati Puja</div></div>
+    <div class="gallery-item"><img src="Janamashtami.jpg" alt=""><div class="caption">Janamashtami</div></div>
+    <div class="gallery-item"><img src="Playground.jpg" alt=""><div class="caption">Playground</div></div>
+    <div class="gallery-item"><img src="Arts.jpg" alt=""><div class="caption">Arts & Craft</div></div>
+    <div class="gallery-item"><img src="Teachers.jpg" alt=""><div class="caption">Our Faculties</div></div>
+    <div class="gallery-item"><img src="Class10girls.jpg" alt=""><div class="caption">Rangoli Class 10 (Girls)</div></div>
+    <div class="gallery-item"><img src="Class10boys.jpg" alt=""><div class="caption">Rangoli Class 10 (Boys)</div></div>
+    <div class="gallery-item"><img src="Class9.jpg" alt=""><div class="caption">Diwali Highlights</div></div>
 
-      <!-- 2 - your library image (you uploaded library.jpeg to repo root) -->
-      <div class="gallery-item">
-        <!-- portrait image: show top of image so faces appear -->
-        <img src="Classroom.jpg" alt="Interactive Classroom" style="object-position:top" loading="lazy">
-        <div class="caption">Interactive Classroom</div>
-      </div>
+  </div>
+</main>
 
-      <!-- 3 - your sports image (you uploaded sports.jpeg to repo root) -->
-      <div class="gallery-item">
-        <img src="Computer_lab.jpg" alt="Cyber Space Room" style="object-position:top" loading="lazy">
-        <div class="caption">Cyber Space Room</div>
-      </div>
+<footer>
+  © 2025 MDS International School — All Rights Reserved.
+</footer>
 
-      <!-- 4 -->
-      <div class="gallery-item">
-        <img src="Independence_day.jpg" alt="78th Independence Day Celebration" loading="lazy">
-        <div class="caption">78th Independence Day Celebration</div>
-      </div>
+<!-- -------- FULLSCREEN VIEWER -------- -->
+<div id="viewer">
 
-      <!-- 5 -->
-      <div class="gallery-item">
-        <img src="Saraswati_puja.jpg" alt="Saraswati Puja Highlights" loading="lazy">
-        <div class="caption">Saraswati Puja Highlights</div>
-      </div>
+  <button class="viewer-btn" id="closeBtn">✖</button>
+  <button class="viewer-btn" id="prevBtn">⟨ Prev</button>
+  <button class="viewer-btn" id="nextBtn">Next ⟩</button>
 
-      <!-- 6 -->
-      <div class="gallery-item">
-        <img src="Janamashtami.jpg" alt="Janamashtami Celebrations" loading="lazy">
-        <div class="caption">Janamashtami Celebrations</div>
-      </div>
+  <img id="viewerImg">
 
-      <!-- 7 - a test/uploaded image path (we'll transform this for hosting) -->
-      <div class="gallery-item">
-        <img src="Playground.jpg" alt="School Playgroung Activities" loading="lazy">
-        <div class="caption">School Playgroung Activities</div>
-      </div>
+  <button class="viewer-btn" id="zoomIn">Zoom +</button>
+  <button class="viewer-btn" id="zoomOut">Zoom −</button>
+  <a class="viewer-btn" id="downloadBtn" download>Download</a>
 
-      <!-- 8 -->
-      <div class="gallery-item">
-        <img src="Arts.jpg" alt="Arts & craft" loading="lazy">
-        <div class="caption">Arts & craft</div>
-      </div>
+</div>
 
-      <!-- 9 -->
-      <div class="gallery-item">
-        <img src="Teachers.jpg" alt="Our Faculties" loading="lazy">
-        <div class="caption">Our Faculties</div>
-      </div>
+<script>
+let images = Array.from(document.querySelectorAll(".gallery-item img"));
+let current = 0;
+let zoom = 1;
 
-      <!-- 10 -->
-      <div class="gallery-item">
-        <img src="Class10girls.jpg" alt="Rangoli By Class 10 Girls" loading="lazy">
-        <div class="caption">Rangoli By Class 10 Girls</div>
-      </div>
+function openViewer(index){
+  current = index;
+  zoom = 1;
+  viewerImg.src = images[current].src;
+  downloadBtn.href = images[current].src;
+  viewer.style.display = "flex";
+  viewerImg.style.transform = "scale(1)";
+}
 
-      <!-- 11 -->
-      <div class="gallery-item">
-        <img src="Class10boys.jpg" alt="Rangoli By Class 10 Boys" loading="lazy">
-        <div class="caption">Rangoli By Class 10 Boy</div>
-      </div>
+function closeViewer(){
+  viewer.style.display="none";
+}
 
-      <!-- 12 -->
-      <div class="gallery-item">
-        <img src="Class9.jpg" alt="Diwali Highlights" loading="lazy">
-        <div class="caption">Diwali Highlights</div>
-      </div>
+function nextImg(){
+  current = (current + 1) % images.length;
+  openViewer(current);
+}
 
-    </div>
-    <!-- ====== end gallery-grid ====== -->
+function prevImg(){
+  current = (current - 1 + images.length) % images.length;
+  openViewer(current);
+}
 
-  </main>
+function zoomInImg(){
+  zoom += 0.2;
+  viewerImg.style.transform = "scale(" + zoom + ")";
+}
 
-  <footer>
-    &copy; 2025 MDS International School. All Rights Reserved.
-  </footer>
+function zoomOutImg(){
+  if(zoom > 0.4){
+    zoom -= 0.2;
+    viewerImg.style.transform = "scale(" + zoom + ")";
+  }
+}
+
+/* Swipe Support */
+let startX = 0;
+viewer.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+viewer.addEventListener("touchend", e => {
+  let endX = e.changedTouches[0].clientX;
+  if(endX - startX > 50) prevImg();
+  if(startX - endX > 50) nextImg();
+});
+
+/* Assign events */
+images.forEach((img, i)=>{
+  img.addEventListener("click",()=>openViewer(i));
+});
+
+closeBtn.onclick = closeViewer;
+nextBtn.onclick = nextImg;
+prevBtn.onclick = prevImg;
+zoomIn.onclick = zoomInImg;
+zoomOut.onclick = zoomOutImg;
+
+/* ESC close */
+document.addEventListener("keydown", e=>{
+  if(e.key === "Escape") closeViewer();
+});
+</script>
 
 </body>
 </html>
